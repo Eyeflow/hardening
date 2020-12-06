@@ -134,7 +134,7 @@ function f_sshdconfig {
     sed -i 's/AllowAgentForwarding.*/AllowAgentForwarding no/' "$SSHDFILE"
   fi
   if ! grep -q "^PubkeyAuthentication" "$SSHDFILE" 2> /dev/null; then
-    echo "PubekyAuthentication yes" >> "$SSHDFILE"
+    echo "PubkeyAuthentication yes" >> "$SSHDFILE"
   else
     sed -i 's/PubkeyAuthentication.*/PubkeyAuthentication yes/' "$SSHDFILE"
   fi
