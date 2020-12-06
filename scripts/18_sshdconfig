@@ -131,7 +131,12 @@ function f_sshdconfig {
   if ! grep -q "^AllowAgentForwarding" "$SSHDFILE" 2> /dev/null; then
     echo "AllowAgentForwarding no" >> "$SSHDFILE"
   else
-    sed -i 's/AllowAgentForwarding.*/AllowTcpForwarding no/' "$SSHDFILE"
+    sed -i 's/AllowAgentForwarding.*/AllowAgentForwarding no/' "$SSHDFILE"
+  fi
+  if ! grep -q "^PubkeyAuthentication" "$SSHDFILE" 2> /dev/null; then
+    echo "PubekyAuthentication yes" >> "$SSHDFILE"
+  else
+    sed -i 's/PubkeyAuthentication.*/PubkeyAuthentication yes/' "$SSHDFILE"
   fi
 
   if ! grep -q "^TCPKeepAlive" "$SSHDFILE" 2> /dev/null; then
